@@ -1,0 +1,63 @@
+const fs = require('fs');
+
+const fetchNotes = () => {
+  try {
+    // * Fetch the existing notes if any.
+    const notesString = fs.readFileSync('note-data.json');
+
+    // * Parse it using JSON.parse
+    return JSON.parse(notesString);
+  } catch (error) {
+    return [];
+  }
+};
+
+const saveNotes = notes => {
+  fs.writeFileSync('note-data.json', JSON.stringify(notes));
+  console.log('Note created successfully.');
+  console.log('--');
+};
+
+const addNote = (title, body) => {
+  let notes = fetchNotes();
+  const note = {
+    title,
+    body
+  };
+
+  // * Loop through the notes array using a for...of loop and check if
+  // * the title already exists in the note
+  for (const singleNote of notes) {
+    if (singleNote.title === note.title) {
+      return console.log(
+        `UniqueErrorOccurred: A note with the title: ${
+          note.title
+        } already exists.`
+      );
+    }
+  }
+
+  // * Create the note if the title does not exist.
+  notes.push(note);
+  saveNotes(notes);
+  return note;
+};
+
+const getAll = () => {
+  console.log('getting all notes....');
+};
+
+const getNote = title => {
+  console.log('Getting one note with title: ', title);
+};
+
+const removeNote = () => {
+  console.log('Removing all notes');
+};
+
+module.exports = {
+  addNote,
+  getAll,
+  getNote,
+  removeNote
+};
