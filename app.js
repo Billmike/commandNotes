@@ -27,7 +27,7 @@ switch (command) {
     break;
   case 'remove':
     console.log('Removing notes...');
-    notes.removeNote();
+    notes.removeNote(argv.title);
     break;
   default:
     console.log('Command not recognized');

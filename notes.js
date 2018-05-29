@@ -14,7 +14,7 @@ const fetchNotes = () => {
 
 const saveNotes = notes => {
   fs.writeFileSync('note-data.json', JSON.stringify(notes));
-  console.log('Note created successfully.');
+  console.log('Note saved successfully.');
   console.log('--');
 };
 
@@ -51,8 +51,13 @@ const getNote = title => {
   console.log('Getting one note with title: ', title);
 };
 
-const removeNote = () => {
-  console.log('Removing all notes');
+const removeNote = title => {
+  const notes = fetchNotes();
+
+  const deletedNote = notes.filter(note => {
+    return title !== note.title;
+  });
+  saveNotes(deletedNote);
 };
 
 module.exports = {
