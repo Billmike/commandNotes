@@ -29,9 +29,10 @@ switch (command) {
   case 'remove':
     console.log('Removing notes...');
     const removedNote = notes.removeNote(argv.title);
-    if (removedNote) {
-      console.log('Note deleted successfully');
-    }
+    const message = removedNote
+      ? 'Note deleted successfully'
+      : 'Note not found.';
+    console.log(message);
     break;
   default:
     console.log('Command not recognized');
