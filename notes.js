@@ -47,6 +47,16 @@ const getAll = () => {
 
 const getNote = title => {
   console.log('Getting one note with title: ', title);
+  const notes = fetchNotes();
+  // const singleNote = notes.map(note => {
+  //   if (note.title === title) {
+  //     return note;
+  //   }
+  //   return console.log('Note not found');
+  // });
+  const singleNote = notes.filter(note => note.title === title);
+
+  return singleNote;
 };
 
 const removeNote = title => {

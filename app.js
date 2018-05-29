@@ -24,7 +24,8 @@ switch (command) {
     break;
   case 'read':
     console.log('Reading notes....');
-    notes.getNote(argv.title);
+    const singleNote = notes.getNote(argv.title);
+    console.log(singleNote);
     break;
   case 'remove':
     console.log('Removing notes...');
