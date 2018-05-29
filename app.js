@@ -25,7 +25,11 @@ switch (command) {
   case 'read':
     console.log('Reading notes....');
     const singleNote = notes.getNote(argv.title);
-    console.log(singleNote);
+    if (singleNote.length > 0) {
+      console.log(singleNote);
+    } else {
+      console.log('Note not found.');
+    }
     break;
   case 'remove':
     console.log('Removing notes...');
