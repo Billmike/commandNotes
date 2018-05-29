@@ -16,6 +16,8 @@
     "yargs": "^11.0.0"
   },
   "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0",
     "nodemon": "^1.17.5"
   }
 }

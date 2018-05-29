@@ -6,10 +6,10 @@ const notes = require('./notes');
 
 const { argv } = yargs;
 
-let command = argv._[0];
+const command = argv._[0];
 
 switch (command) {
-  case 'add':
+  case 'add': {
     console.log('Adding new notes');
     const note = notes.addNote(argv.title, argv.body);
     if (note) {
@@ -18,11 +18,12 @@ switch (command) {
       console.log(`Body: ${note.body}`);
     }
     break;
+  }
   case 'list':
     console.log('Listing all notes');
     notes.getAll();
     break;
-  case 'read':
+  case 'read': {
     console.log('Reading notes....');
     const singleNote = notes.getNote(argv.title);
     if (singleNote.length > 0) {
@@ -31,7 +32,8 @@ switch (command) {
       console.log('Note not found.');
     }
     break;
-  case 'remove':
+  }
+  case 'remove': {
     console.log('Removing notes...');
     const removedNote = notes.removeNote(argv.title);
     const message = removedNote
@@ -39,6 +41,7 @@ switch (command) {
       : 'Note not found.';
     console.log(message);
     break;
+  }
   default:
     console.log('Command not recognized');
     break;
