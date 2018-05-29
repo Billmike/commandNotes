@@ -13,6 +13,7 @@ switch (command) {
     console.log('Adding new notes');
     const note = notes.addNote(argv.title, argv.body);
     if (note) {
+      console.log('Note saved successfully');
       console.log(`Title: ${note.title}`);
       console.log(`Body: ${note.body}`);
     }
@@ -27,7 +28,10 @@ switch (command) {
     break;
   case 'remove':
     console.log('Removing notes...');
-    notes.removeNote(argv.title);
+    const removedNote = notes.removeNote(argv.title);
+    if (removedNote) {
+      console.log('Note deleted successfully');
+    }
     break;
   default:
     console.log('Command not recognized');
