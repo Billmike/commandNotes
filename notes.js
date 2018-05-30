@@ -12,12 +12,12 @@ const fetchNotes = () => {
   }
 };
 
-const saveNotes = notes => {
+const saveNotes = (notes) => {
   fs.writeFileSync('note-data.json', JSON.stringify(notes));
 };
 
 const addNote = (title, body) => {
-  let notes = fetchNotes();
+  const notes = fetchNotes();
   const note = {
     title,
     body
@@ -43,9 +43,10 @@ const addNote = (title, body) => {
 
 const getAll = () => {
   console.log('getting all notes....');
+  return fetchNotes();
 };
 
-const getNote = title => {
+const getNote = (title) => {
   console.log('Getting one note with title: ', title);
   const notes = fetchNotes();
   const singleNote = notes.filter(note => note.title === title);
@@ -53,10 +54,10 @@ const getNote = title => {
   return singleNote;
 };
 
-const removeNote = title => {
+const removeNote = (title) => {
   const notes = fetchNotes();
 
-  const deletedNote = notes.filter(note => {
+  const deletedNote = notes.filter((note) => {
     return title !== note.title;
   });
   saveNotes(deletedNote);

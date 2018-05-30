@@ -19,10 +19,12 @@ switch (command) {
     }
     break;
   }
-  case 'list':
-    console.log('Listing all notes');
-    notes.getAll();
+  case 'list': {
+    const allNotes = notes.getAll();
+    console.log(`Printing ${allNotes.length} note(s)`);
+    allNotes.forEach(note => console.log(note));
     break;
+  }
   case 'read': {
     console.log('Reading notes....');
     const singleNote = notes.getNote(argv.title);
